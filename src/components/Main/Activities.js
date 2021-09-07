@@ -38,7 +38,7 @@ export default function Activities(){
     function check_Country(e){
       e.preventDefault();
       dispatch(checkCountry(Input));
-      //console.log(state.check)
+      console.log(state.check)
       if(Input){
         if(!activity.countries.includes(Input.toLowerCase())){//checkeamos que no haya el mismo pais ya concatenado antes enviar
             setActivity({

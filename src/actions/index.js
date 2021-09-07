@@ -66,7 +66,7 @@ export const getallActivities =()=>(dispatch)=> {
     axios.get(`${API}/Activity`)
    
     .then(json => {
-        if(json.length>0){
+        if(json.data.length>0){
             dispatch({
                 type: 'GET_ALL_ACTIVITIES',
                 payload: json.data });
@@ -84,20 +84,21 @@ export const getCountriesbyActivities =(activity,offset,sort,continent)=>(dispat
 }
 
 export const postActivity =(activity)=>(dispatch)=> { 
-
+    
     var data=JSON.stringify(activity)
-    axios.post(`${API}/Activity`,{
+    console.log(data)
+    fetch(`${API}/Activity`,{
         headers: {
             'Content-Type': 'application/json'
           },
         method:'POST',
         body:data
         }
-    )
-    .then(json => {
+    ).then(response => response.json()
+    ).then(json => {
         dispatch({
              type: 'POST_COUNTRIES',
-            payload: json.data });
+            payload: json });
         }); 
 }
 
